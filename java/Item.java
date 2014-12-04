@@ -29,7 +29,6 @@ public abstract class Item{
 		return price;
 	}
 
-	public abstract void use(Character character);
 	public abstract void equip(Character character);
 	public abstract void unequip(Character character);
 	public abstract int getAttackPts();

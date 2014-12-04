@@ -34,8 +34,6 @@ public class Weapon extends Item{
 		return 0;
 	}
 
-	public void use(Character character){ }
-
 	// explicacao do porque de ter criado esses metodos (equip e unequip) e nao aproveitado o use estao no Item.java
 	public void equip(Character character){
 
