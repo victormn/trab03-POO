@@ -4,6 +4,7 @@ public abstract class Character{
 	
 	private String alias;
 	private Inventory myitems;
+	private int opponents;
 	private int HP;
 	private int MP;
 
@@ -63,6 +64,10 @@ public abstract class Character{
 		return HP;
 	}
 
+	public int getOpponents(){
+		return opponents;
+	}
+
 	public void attack(Character oponente){ 
 
 		int peso = 1; // se for um ataque critico: peso = 2; se ele errar o ataque: peso = 0; se for um ataque normal: peso continua 1 
@@ -113,6 +118,10 @@ public abstract class Character{
 	
 	/* setters */
 
+	public void setOpponents(int opponents){
+		this.opponents = opponents;
+	}
+
 	// a somatoria dos atributos tem que dar 100
 
 	public void setStrenght(int strenght){
@@ -146,4 +155,5 @@ public abstract class Character{
 		if (constitution > 100 - speed - dexterity - strenght)
 			this.constitution = 100 - speed - dexterity - strenght;
 	}
+
 }

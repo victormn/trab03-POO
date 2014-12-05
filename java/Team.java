@@ -22,13 +22,6 @@ public class Team{
 		return name;
 	}
 	
-	public String getResults(){
-
-		String tostring = "Win: " + win + "; Lose: " + lose + "; Draw: "+ draw;
-
-		return tostring;
-	}
-
 	public String toString(){
 
 		String tostring = "TEAM "+ name + " COLOR " + color.getColor();
