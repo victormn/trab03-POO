@@ -2,23 +2,28 @@
 
 import java.util.*;
 
-public class Pair{
+public class Pair<T, U>{
 
-	private Item item;
-	private boolean bool;
+	private T first;
+	private U second;
 
-	public Pair(Item item, boolean bool){
-		this.item = item;
-		this.bool = bool;
+	public Pair(T first, U second){
+		this.first = first;
+		this.second = second;
 	}
 
-	public Item first(){
+	public T first(){
 		return item;
 	}
-	public boolean second(){
+	public U second(){
 		return bool;
 	}
-	public void setSecond(boolean bool){
-		this.bool = bool;
+
+	public void setFirst(T first){
+		this.first = first;
+	}	
+
+	public void setSecond(U second){
+		this.second = second;
 	}
 }
