@@ -1,11 +1,11 @@
 import java.util.*;
 
-public class Store<T>{
+public class Store{
 
-	private ArrayList<T> itemsforsale;
+	private ArrayList<Item> itemsforsale;
 		
 	public Store(){
-		itemsforsale = new ArrayList<T>();
+		itemsforsale = new ArrayList<Item>();
 		nitemsforsale = 0;		
 	}
 
@@ -43,7 +43,7 @@ public class Store<T>{
 	}
 
 	// Abastece a loja com 'items'
-	public void supplyStore(T itemforsale){
+	public void supplyStore(Item itemforsale){
 		
 		itemsforsale.push(itemforsale);		
 	}
