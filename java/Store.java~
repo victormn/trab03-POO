@@ -1,11 +1,11 @@
 import java.util.*;
 
-public class Store{
+public class Store<T>{
 
-	private ArrayList<Item> itemsforsale;
+	private ArrayList<T> itemsforsale;
 		
 	public Store(){
-		itemsforsale = new ArrayList<Item>();
+		itemsforsale = new ArrayList<T>();
 		nitemsforsale = 0;		
 	}
 
@@ -43,34 +43,8 @@ public class Store{
 	}
 
 	// Abastece a loja com 'items'
-	public void supplyStore(Item itemforsale){
+	public void supplyStore(T itemforsale){
 		
 		itemsforsale.push(itemforsale);		
-	}
-
-	public void showStore(Character character){
-	
-		// titulo
-		System.out.println("\n\tStore\n");
-
-		for (int i = 0; i < itemsforsale.size(); i++) {
-
-			System.out.print(itemsforsale.get(i).first().getName() + " ");
-
-			// imprime a quantidade certa de pontos "." de modo que os precos fiquem alinhados
-			for (int j = 0; j < 20-itemsforsale.get(i).first().getName()l.ength() ; j++)
-					System.out.print("."); 	
-		
-			System.out.println(" " + itemsforsale.get(i).first().getPrice() + " ouros");
-		}
-
-		do{
-			System.out.println("\n Que item quer comprar?");
-
-			Scanner scanner = new Scanner(System.in);
-			String nameItem = scanner.nextLine();
-
-		}while(!buyItem(nameItem, character)); 
-
 	}
 }
