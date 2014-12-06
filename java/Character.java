@@ -22,7 +22,7 @@ public abstract class Character{
 	public Character(String alias){
 		this.alias = alias;
 		myitems = new Inventory();
-		HP = 100;
+		HP = 5000;
 		XP = 1;
 		strenght = 1;
 		speed = 1;
@@ -87,16 +87,16 @@ public abstract class Character{
 		// a chance dele estar no intervalo [0 , (0.1/XP)] eh (0.1/XP) = "miss" 
 		// a chance dele estar no intervalo [0 , (0.01*XP)] eh (0.01*XP) = "critical strike"
 		
-		double rand1 = trab2.nextDouble(0.0, 1.0);
+		double rand1 = trab3.nextDouble(0.0, 1.0);
 
 		if (rand1 <= (0.1/XP)) 
 			peso = 0;
-		else if (rand1 <= (0.01*XP)) 
+		else if (rand1 <= (0.1*XP)) 
 			peso = 2;
 
-	        int rand2 = trab2.nextInt(0, 11) - 5; // rand equivale a um numero aleatorio entre -5 e 5 (11 numeros nesse intervalo)
+	    int rand2 = trab3.nextInt(0, 21) + 10; // rand equivale a um numero aleatorio entre 10 e 30 (11 numeros nesse intervalo)
 
-		int dano = (int)(peso*(getAttackPoints() - oponente.getDefensePoints() + rand2));
+		int dano = (int)(peso*(getAttackPoints() - oponente.getDefensePoints()/3 + rand2));
 
 		if (dano <= 0) dano = 1;
 
@@ -106,15 +106,15 @@ public abstract class Character{
 	// Indica experiencia do 'character', deve estar limitada em [1,100]
 	public void addXP(int XP){
 		this.XP += XP;
-		if (this.XP > 100)
-			this.XP = 100;
+		if (this.XP > 5000)
+			this.XP = 5000;
 	}
 
 	// Indica unidade de poder mágico do 'character'
 	public void addMP(int MP){
 		this.MP += MP;
-		if (this.MP > 100)
-			this.MP = 100;
+		if (this.MP > 5000)
+			this.MP = 5000;
 		if (this.MP < 0)
 			this.MP = 0;
 	}
@@ -122,8 +122,8 @@ public abstract class Character{
 	// Indica vitalidade do 'character'
 	public void addHP(int HP){
 		this.HP += HP;
-		if (this.HP > 100)
-			this.HP = 100;
+		if (this.HP > 5000)
+			this.HP = 5000;
 		if (this.HP < 0)
 			this.HP = 0;
 	}

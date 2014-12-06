@@ -48,7 +48,7 @@ public class Weapon extends Item{
 	public boolean equip(Character character){
 
 		try{
-			character.getInventory().searchItem(this.getName())
+			character.getInventory().searchItem(this.getName());
 		}catch (NullPointerException e) {
 			System.out.println("Weapon nao existe no inventario!");
 			return false;
@@ -64,17 +64,16 @@ public class Weapon extends Item{
 		while (character.getInventory().getWeaponCounter() >= 2){
 
 			boolean found = false;
-			int pos;
 			for (int i = pos+1; found = false; i++) {
 				if (character.getInventory().getPair(i).second()){
 					pos = i;
 					found = true;
 				}
 			}
-			character.getInventory().get(pos).unequip(character);
+			character.getInventory().searchItem(pos).unequip(character);
 
 			if (character.getInventory().getWeaponCounter() >= 2){
-				character.getInventory().get(pos).equip(character);
+				character.getInventory().searchItem(pos).equip(character);
 
 			}
 		}

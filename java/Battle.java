@@ -12,7 +12,7 @@ public class Battle{
 	}
 
 	// Gerencia as thread que ocorrem nos ataques 
-	public void manageFight(){
+	public void manageFight() throws InterruptedException{
 
 		// - Para que o ataque seja realizado por um personagem aleatorio, tem-se dois numeros randomicos (random1 e random2),
 		//   gerado de 0 ao numero de personagens (de 0 a team1.size() (*ou team2.size()*)). Este numero representa
@@ -38,7 +38,7 @@ public class Battle{
 		int random2 = trab3.nextInt(0, vteam2.size());
 
 		Character c1 = vteam1.get(random1);
-		Character c2 = vteam1.get(random2);
+		Character c2 = vteam2.get(random2);
 
 		Fight fight1 = new Fight(c1, team1, c2, team2);
 				
@@ -46,11 +46,11 @@ public class Battle{
 		vteam2.remove(random2);
 
 		// Segunda luta (segundo thread)
-		int random1 = trab3.nextInt(0, vteam1.size());
-		int random2 = trab3.nextInt(0, vteam2.size());
+		random1 = trab3.nextInt(0, vteam1.size());
+		random2 = trab3.nextInt(0, vteam2.size());
 
-		Character c1 = vteam1.get(random1);
-		Character c2 = vteam1.get(random2);
+		c1 = vteam1.get(random1);
+		c2 = vteam2.get(random2);
 
 		Fight fight2 = new Fight(c1, team1, c2, team2);
 				
@@ -58,11 +58,11 @@ public class Battle{
 		vteam2.remove(random2);
 
 		// Terceira luta (terceiro thread)
-		int random1 = trab3.nextInt(0, vteam1.size());
-		int random2 = trab3.nextInt(0, vteam2.size());
+		random1 = trab3.nextInt(0, vteam1.size());
+		random2 = trab3.nextInt(0, vteam2.size());
 
-		Character c1 = vteam1.get(random1);
-		Character c2 = vteam1.get(random2);
+		c1 = vteam1.get(random1);
+		c2 = vteam2.get(random2);
 
 		Fight fight3 = new Fight(c1, team1, c2, team2);
 				

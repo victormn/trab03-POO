@@ -43,41 +43,41 @@ public class trab3{
 
 		/* default */
 
-		Armor armor = new Armor("Helmet", 0.0, 10, 1.0);
-		Weapon weapon = new Weapon("Sword", 0.0, 10, 1.0);
+		Armor armor = new Armor("Helmet", 0.0, 10, 20.0);
+		Weapon weapon = new Weapon("Sword", 0.0, 7, 90.0);
 		HealthPotion health = new HealthPotion("Life", 0.0, 1);
 		ManaPotion mana = new ManaPotion("Mana", 0.0, 1);
 
 
 		/* armor */
-		allItems.add(new Armor("BatSuit", 200000.00, 10, 20.0));
-		allItems.add(new Armor("Superman's Red Underwear", 100.0, 5, 1.0));
-		allItems.add(new Armor("Captain America's Helmet", 699.9, 5, 6.0));
+		allItems.add(new Armor("BatSuit", 500.00, 10, 20.0));
+		allItems.add(new Armor("Tiffany's Earrings", 350.00, 19, 2));
+		allItems.add(new Armor("Louis XIV's shoes", 300.00, 15, 10));
 		allItems.add(new Armor("Weird Red Costume", 0.99, 1, 5.0));
-		allItems.add(new Armor("Magneto's Helmet", 799.9, 10, 8.0));
-		allItems.add(new Armor("Cool Red Costume", 1.99, 2, 5.0));
+		allItems.add(new Armor("Magneto's Helmet", 800.0, 10, 8.0));
+		allItems.add(new Armor("Fancy glasses", 100.00, 12, 7));
 	 
 		/* weapon */
-		allItems.add(new Weapon("Batarangs", 0.90, 7, 90.0));
-		allItems.add(new Weapon("Clark's Glass", 45.00, 5, 180.0));
+		allItems.add(new Weapon("Batarangs", 20.00, 7, 90.0));
+		allItems.add(new Weapon("Poisoned Bubbles", 50.00, 2, 20));
 		allItems.add(new Weapon("Adamantium Shield", 800.00, 9, 100.0));
-		allItems.add(new Weapon("Uncle Ben's Grave", 00.0, 9, 1.0));
+		allItems.add(new Weapon("Nuclear Tomatoes", 30, 2, 9));
 		allItems.add(new Weapon("Magnets", 1.99, 6, 25.0));
-		allItems.add(new Weapon("Winged Shoes", 49.9, 6, 1.0));
-		allItems.add(new Weapon("Magic Book for Professionals, vol.1", 99.99, 9, 200.0));
-		allItems.add(new Weapon("Magic Book for Professionals, vol.2", 99.99, 9, 200.0));
+		allItems.add(new Weapon("Gaga's Microphone", 147, 4, 25));
+		allItems.add(new Weapon("Golden Arrow", 400.00, 8, 42));
+		allItems.add(new Weapon("Flufy Pillow", 130, 5, 10));
 		allItems.add(new Weapon("Magic Book 4 Dumbs, vol.A", 4.99, 9, 2.0));
-		allItems.add(new Weapon("Magic Book 4 Dumbs, vol.B", 4.99, 9, 2.0));
+		allItems.add(new Weapon("Elder Wand", 800.0, 9, 50));
 	 
 		/* health potion */
-		allItems.add(new HealthPotion("Enemy's Fear", 49.99, 20));
+		allItems.add(new HealthPotion("Felix Felicis", 80, 20));
 		allItems.add(new HealthPotion("Anti Kyptonite Potion", 99.99, 50));
-		allItems.add(new HealthPotion("40s Coke", 4.99, 15));
+		allItems.add(new HealthPotion("Graber", 40, 3));
 		allItems.add(new HealthPotion("Own Tears", 00.0, 1));
-		allItems.add(new HealthPotion("Eletric Potion", 29.9, 10));
+		allItems.add(new HealthPotion("Dindle", 100, 32));
 	 
 		/* mana potion */
-		allItems.add(new ManaPotion("Marvel's Fans Sweat", 00.0, 2));
+		allItems.add(new ManaPotion("Hangover", 250, 251));
 		allItems.add(new ManaPotion("Enemy's Blood", 29.99, 20));
 		allItems.add(new ManaPotion("Water", 1.50, 1));
 
@@ -85,7 +85,8 @@ public class trab3{
 		/* criando os personagens */
 
 		/* 2 knight */
-		Knight bruce = new Knight("Bruce Wayne", 10);
+		//Knight bruce = new Knight("Bruce Wayne", 10);
+		Knight bruce = new Knight("a", 10);
 		bruce.getInventory().earnGold(1000.0);
 		bruce.getInventory().setSpaces(15);
 	 
@@ -105,7 +106,8 @@ public class trab3{
 		bruce.addMP(0);
 		allCharacters.add(bruce);
 
-		Knight bodolski = new Knight("Bodolski", 30);
+		//Knight bodolski = new Knight("Sir Bodolski", 30);
+		Knight bodolski = new Knight("b", 30);
 		bodolski.getInventory().earnGold(1000.0);
 		bodolski.getInventory().setSpaces(15);
 	 
@@ -126,7 +128,8 @@ public class trab3{
 		allCharacters.add(bodolski);
 
 		/* 2 thief */
-		Thief barry = new Thief("Barry Allen", 25);
+		//Thief barry = new Thief("Barry Allen", 25);
+		Thief barry = new Thief("c", 25);
 		barry.getInventory().earnGold(1000.0);
 		barry.getInventory().setSpaces(15);
 
@@ -146,7 +149,8 @@ public class trab3{
 		barry.addMP(0);
 		allCharacters.add(barry);
 
-		Thief goultier = new Thief("Goultier", 47);
+		//Thief goultier = new Thief("Mr. Goultier", 47);
+		Thief goultier = new Thief("d", 47);
 		goultier.getInventory().earnGold(1000.0);
 		goultier.getInventory().setSpaces(15);
 
@@ -167,7 +171,8 @@ public class trab3{
 		allCharacters.add(goultier);
 
 		/* 2 wizards */
-		Wizard john = new Wizard("John Constantine", 10);
+		//Wizard john = new Wizard("John Constantine", 10);
+		Wizard john = new Wizard("e", 10);
 		john.getInventory().earnGold(1000.0);
 		john.getInventory().setSpaces(15);
 
@@ -187,7 +192,8 @@ public class trab3{
 		john.addMP(100);
 		allCharacters.add(john);
 
-		Wizard violet = new Wizard("Violet", 16);
+		//Wizard violet = new Wizard("Lady Violet", 16);
+		Wizard violet = new Wizard("f", 16);
 		violet.getInventory().earnGold(1000.0);
 		violet.getInventory().setSpaces(15);
 

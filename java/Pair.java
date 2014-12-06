@@ -13,10 +13,10 @@ public class Pair<T, U>{
 	}
 
 	public T first(){
-		return item;
+		return first;
 	}
 	public U second(){
-		return bool;
+		return second;
 	}
 
 	public void setFirst(T first){
@@ -27,3 +27,31 @@ public class Pair<T, U>{
 		this.second = second;
 	}
 }
+
+
+
+
+// classe craiada para simular um pair
+/*
+import java.util.*;
+
+public class Pair{
+
+	private Item item;
+	private boolean bool;
+
+	public Pair(Item item, boolean bool){
+		this.item = item;
+		this.bool = bool;
+	}
+
+	public Item first(){
+		return item;
+	}
+	public boolean second(){
+		return bool;
+	}
+	public void setSecond(boolean bool){
+		this.bool = bool;
+	}
+}*/

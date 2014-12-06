@@ -1,12 +1,12 @@
 all:
-	@javac trab2.java
+	@javac trab3.java
 
 clean:
 	@rm -f *.class Items/*.class
 	@find -name "*~" | xargs rm -rf
 
 run:
-	@java trab2
+	@java trab3
 
 # sera usado somente para testar os metodos das classes atraves de mainTest.java
 test:

@@ -8,7 +8,7 @@ public class Inventory{
 	private double gold;
 	private int armorCounter;		// atributo auxiliar que indica a quantidade de 'armor's equipados(max=1)
 	private int weaponCounter;		// atributo auxiliar que indica a quantidade de 'weapon's equipados(max=2)
-	private ArrayList<Pair> items;		// armazena 'item's existentes em 'inventory' em formato de um pair(associacao
+	private ArrayList<Pair<Item, Boolean>> items;		// armazena 'item's existentes em 'inventory' em formato de um pair(associacao
 						// de dois valores). A implementacao de pair foi feita atraves da classe 'Pair'
 
 	/* Construtor */
@@ -16,7 +16,7 @@ public class Inventory{
 	public Inventory(){
 		spaces = 0;
 		gold = 0.0;		
-		items = new ArrayList<Pair>();
+		items = new ArrayList<Pair<Item, Boolean>>();
 		armorCounter = 0;
 		weaponCounter = 0;
 	}
@@ -40,17 +40,8 @@ public class Inventory{
 		return weaponCounter;
 	}
 
-	public void spendGold(double gold){
-		if (this.gold - gold >= 0)
-			this.gold -= gold;
-	}
-
-	public void earnGold(double gold){
-		this.gold = this.gold + gold;
-	}
-
-	// Retorna o array de pair de 'inventory'
-	public Pair getPair(int position){
+	// Retorna um pair de 'inventory'
+	public Pair<Item, Boolean> getPair(int position){
 		return items.get(position);
 	}
 
@@ -101,7 +92,7 @@ public class Inventory{
 	// Insere um objeto 'Item' no array de Pair 
 	public void insertItem(Item item){
 		if (getAvailableSpace() > 0) // só adiciona se existir espaco disponivel
-			items.add(new Pair(item, false));
+			items.add(new Pair<Item, Boolean>(item, false));
 	}
 
 	// Remove um objeto 'Item' através de seu nome

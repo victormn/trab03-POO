@@ -37,7 +37,7 @@ public class ManaPotion extends Item implements Potion{
 	}
 	
 	// Equipa um 'item'(implementado em Armor e Weapon, itens que podem ser equipados)
-	public boolean equip(Character character){ }
+	public boolean equip(Character character){ return false;}
 
 	// Desequipa um 'item'(implementado em Armor e Weapon, itens que podem ser equipados)
 	public void unequip(Character character){ }	
