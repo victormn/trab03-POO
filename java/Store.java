@@ -2,12 +2,18 @@ import java.util.*;
 
 public class Store{
 
+	/* Atributos */
+	
 	private ArrayList<Item> itemsforsale;
+	
+	/* Construtor */
 		
 	public Store(){
 		itemsforsale = new ArrayList<Item>();
 		nitemsforsale = 0;		
 	}
+
+	/* Metodos */
 
 	// Retorna a posicao do 'item' em 'itemsforsale'
 	public int pickItem(String name){			

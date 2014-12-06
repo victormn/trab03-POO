@@ -2,6 +2,8 @@ import java.util.*;
 
 public abstract class Character{
 	
+	/* Atributos */	
+
 	private String alias;
 	private Inventory myitems;
 	private int opponents;
@@ -17,20 +19,7 @@ public abstract class Character{
 	protected abstract int getDefensePoints();
 	protected abstract int getAttackPoints();
 
-	// explicacao sobre o speedArmor:
-	// com a intencao de restaurar o speed anterior apos remover a armor (com o metodo unequip, Item.h)
-	// criei o atributo speedArmor e modifiquei o metodo getSpeed()
-
-	// quando equipar uma armor:
-	// speedArmor = speed - formula_da_nova_speed (speedArmor = s - s'     ;sendo s' = s*e^[-(w/20)^2])
-	// o getSpeed() retorna speed - speedArmor, ou seja, s - (s - s') = s - s + s' = s'
-	
-	// quando desequipamos uma armor:
-	// speedArmor = 0
-	// o getSpeed() retorna speed - speedArmor, ou seja, s - (0) = s
-
-	// entao, getSpeed retornara ou a speed normal, s, quando nao tem armor equipado
-	// ou a nova formula da speed, s', com o armor equipado
+	/* Construtor */
 
 	public Character(String alias){
 		this.alias = alias;
@@ -44,10 +33,39 @@ public abstract class Character{
 		constitution = 1;
 	}
 
+	/* Métodos Getters */
+
+	// Retorna o valor de 'HP' do personagem	
+	public int getHP(){
+		return HP;
+	}
+
+	// Retorna a quantidade de oponentes que um 'character' tem 
+	public int getOpponents(){
+		return opponents;
+	}
+	
+	// Retorna o valor de 'dexterity' do personagem
+	public int getDexterity(){
+		return dexterity;
+	}
+
+	// Retorna o valor de 'strenght' do personagem
+	public int getStrenght(){
+		return strenght;
+	}
+
+	// Retorna o valor de 'constitution' do personagem
+	public int getConstitution(){
+		return constitution;
+	}
+
+	// Retorna 'name' do personagem
 	public String getName(){
 		return alias;
 	}
 
+	// Retorna 'inventory' associado a 'character'
 	public Inventory getInventory(){
 		return myitems;
 	}
@@ -56,18 +74,7 @@ public abstract class Character{
 		return speed - speedArmor;
 	}
 
-	public void setSpeedArmor(int speedArmor){
-		this.speedArmor = speedArmor;
-	}
-
-	public int getHP(){
-		return HP;
-	}
-
-	public int getOpponents(){
-		return opponents;
-	}
-
+	// Calcula chances de ataques e deduz o valor obtido de 'HP'(ataque realizado)
 	public void attack(Character oponente){ 
 
 		int peso = 1; // se for um ataque critico: peso = 2; se ele errar o ataque: peso = 0; se for um ataque normal: peso continua 1 
@@ -83,7 +90,7 @@ public abstract class Character{
 		else if (rand1 <= (0.01*XP)) 
 			peso = 2;
 
-        int rand2 = trab2.nextInt(0, 11) - 5; // rand equivale a um numero aleatorio entre -5 e 5 (11 numeros nesse intervalo)
+	        int rand2 = trab2.nextInt(0, 11) - 5; // rand equivale a um numero aleatorio entre -5 e 5 (11 numeros nesse intervalo)
 
 		int dano = (int)(peso*(getAttackPoints() - oponente.getDefensePoints() + rand2));
 
@@ -92,13 +99,14 @@ public abstract class Character{
 		oponente.addHP(dano*(-1));
 	}
 
-
+	// Indica experiencia do 'character', deve estar limitada em [1,100]
 	public void addXP(int XP){
 		this.XP += XP;
 		if (this.XP > 100)
 			this.XP = 100;
 	}
 
+	// Indica unidade de poder mágico do 'character'
 	public void addMP(int MP){
 		this.MP += MP;
 		if (this.MP > 100)
@@ -107,6 +115,7 @@ public abstract class Character{
 			this.MP = 0;
 	}
 
+	// Indica vitalidade do 'character'
 	public void addHP(int HP){
 		this.HP += HP;
 		if (this.HP > 100)
@@ -114,16 +123,14 @@ public abstract class Character{
 		if (this.HP < 0)
 			this.HP = 0;
 	}
-
 	
-	/* setters */
+	/* Métodos Setters */
 
 	public void setOpponents(int opponents){
 		this.opponents = opponents;
 	}
 
-	// a somatoria dos atributos tem que dar 100
-
+	// Atributos que, somados, devem dar 100
 	public void setStrenght(int strenght){
 		this.strenght = strenght;
 		if (strenght < 1)
@@ -156,4 +163,8 @@ public abstract class Character{
 			this.constitution = 100 - speed - dexterity - strenght;
 	}
 
+	// Indica a velocidade alterada ao se equipar um 'armor'
+	public void setSpeedArmor(int speedArmor){
+		this.speedArmor = speedArmor;
+	}
 }

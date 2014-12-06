@@ -1,13 +1,19 @@
 import java.util.*;
 
 public class Weapon extends Item{
+
+	
+	/* Atributos */
+
 	protected int attackpts;
 	protected double range;
 
+	/* Construtor */
+	
 	public Weapon(String name, double price, int attackpts, double range){
 		super(name, price);
 
-		/* verificando os intervalos, caso esteja fora atribui-se o menor valor */
+		// Verificando os intervalos, caso esteja fora atribui-se o menor valor 
 		if (attackpts > 9 || attackpts < 1)
 			attackpts = 1;	
 
@@ -21,25 +27,29 @@ public class Weapon extends Item{
 		return (Weapon)super.clone();
 	}
 
+	/* Métodos */
 
+	// Retorna valor de ataque de 'character'
 	public double getRange(){
 		return range;
 	}
 
+	// Retorna valor de ataque de 'character'
 	public int getAttackPts(){ 
 		return attackpts;
 	}
 
+	// Retorna valor de defesa de 'character'
 	public int getDefensePts(){ 
 		return 0;
 	}
 
-	// explicacao do porque de ter criado esses metodos (equip e unequip) e nao aproveitado o use estao no Item.java
+	// Equipa um 'item'
 	public void equip(Character character){
 
 		if (character.getInventory().searchItem(this.getName()) != null && character.getInventory().getWeaponCounter() < 2){
 
-			// procurando pela posicao do item
+			// Procurando pela posicao do item
 			int position = 0;
 
 			for (int i=0; character.getInventory().searchItem(i) != null; i++){
@@ -47,6 +57,7 @@ public class Weapon extends Item{
 						position = i;
 		    }
 
+			// Se item nao estiver equipado (seu boolean estara como false)
 			if (!character.getInventory().getPair(position).second()){
 				character.getInventory().getPair(position).setSecond(true);
 				character.getInventory().setWeaponCounter(1);
@@ -54,10 +65,11 @@ public class Weapon extends Item{
 		}
 	}
 
+	// Desequipa um 'item'
 	public void unequip(Character character){
 		if (character.getInventory().searchItem(this.getName()) != null && character.getInventory().getWeaponCounter() > 0){
 
-			// procurando pela posicao do item
+			// Procurando pela posicao do item
 			int position = 0;
 
 			for (int i=0; character.getInventory().searchItem(i) != null; i++){
@@ -65,7 +77,7 @@ public class Weapon extends Item{
 						position = i;
 		    }
 
-		
+			// Se item nao estiver desequipado (seu boolean estara como true)	
 			if (character.getInventory().getPair(position).second()){
 				character.getInventory().getPair(position).setSecond(false);
 				character.getInventory().setWeaponCounter(-1);
