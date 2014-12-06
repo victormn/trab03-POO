@@ -12,6 +12,7 @@ public class Battle{
 
 	}
 
+	// Exibe os valores dos resultados 
 	public String getResults(){
 
 		String tostring = "Win: " + win + "; Lose: " + lose + "; Draw: "+ draw;

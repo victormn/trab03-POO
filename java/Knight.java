@@ -2,8 +2,20 @@ import java.util.*;
 
 public class Knight extends Character{
 
-	protected int power;
+	/* Atributos */
+	
+	protected int power;		// poder extra de resistência do 'knight'
 
+	/* Construtor */
+
+	public Knight(String alias, int power){
+		super (alias);
+		this.power = power;		
+	}
+
+	/* Metodos */
+
+	// Retorna valor de defesa de 'character'
 	protected int getDefensePoints(){
 		int item_def_pts = 0;
 
@@ -15,6 +27,7 @@ public class Knight extends Character{
 
 	}
 
+	// Retorna valor de ataque de 'character'
 	protected int getAttackPoints(){
 		int item_att_pts = 0;
 		
@@ -26,11 +39,7 @@ public class Knight extends Character{
 
 	}
 
-	public Knight(String alias, int power){
-		super (alias);
-		this.power = power;		
-	}
-
+	// Indica poder extra de resistência do 'knight'
 	public void addPower(int power){
 		this.power += power;
 		if (this.power > 100)

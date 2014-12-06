@@ -2,8 +2,21 @@ import java.util.*;
 
 public class Thief extends Character{
 
-	protected int stealth;
+	/* Atributos */
+
+	protected int stealth;			// capacidade de se mover sem ser notado do 'thief'
+
+	/* Construtor */
+
+	public Thief(String alias, int stealth){
+		super(alias);		
+		this.stealth = stealth;
+
+	}
 	
+	/* Metodos */
+
+	// Retorna valor de defesa de 'character'
 	protected int getDefensePoints(){
 		int item_def_pts = 0;
 
@@ -15,6 +28,7 @@ public class Thief extends Character{
 
 	}
 
+	// Retorna valor de ataque de 'character'
 	protected int getAttackPoints(){
 		int item_att_pts = 0;
 		
@@ -26,12 +40,7 @@ public class Thief extends Character{
 
 	}
 
-	public Thief(String alias, int stealth){
-		super(alias);		
-		this.stealth = stealth;
-
-	}
-
+	// Indica capacidade de se mover sem ser notado do 'thief'
 	public void addStealth(int stealth){
 		this.stealth += stealth;
 		if (this.stealth > 100)

@@ -2,9 +2,14 @@ import java.util.*;
 
 public class Armor extends Item{
 
-	protected int defensepts;
-	protected double weight;
+	/* Atributos */
 
+	protected int defensepts;		// deve estar entre 1 e 20
+	protected double weight;		// deve estar entre 1 e 20
+
+	
+	/* Construtor */
+	
 	public Armor(String name, double price, int defensepts, double weight){
 		super(name, price);
 		
@@ -24,24 +29,29 @@ public class Armor extends Item{
 		return (Armor)super.clone();
 	}
 
+	/* Métodos */
+
+	// Retorna o valor de 'weight' do item 'armor'
 	public double getWeight(){
 		return weight;
 	}
 
+	// Retorna valor de ataque de 'character'
 	public int getAttackPts(){ 
 		return 0;
 	}
 
+	// Retorna valor de defesa de 'character'
 	public int getDefensePts(){ 
 		return defensepts;
 	}
 
-	// explicacao do porque de ter criado esses metodos (equip e unequip) e nao aproveitado o use estao no Item.java
+	// Equipa um 'item'
 	public void equip(Character character){
 
 		if (character.getInventory().searchItem(this.getName()) != null && character.getInventory().getArmorCounter() < 1){
 
-			// procurando pela posicao do item
+			// Procurando pela posicao do item
 			int position = 0;
 
 			for (int i=0; character.getInventory().searchItem(i) != null; i++){
@@ -49,8 +59,7 @@ public class Armor extends Item{
 						position = i;
 		    }
 
-		    // s' = s*e^[-(w/20)^2]
-		   	// explicacao do speedArmor em Character.java
+		    // Reduzindo velocidade pelo uso de 'armor'(s' = s*e^[-(w/20)^2])
 		    character.setSpeedArmor((int)(character.getSpeed() - (character.getSpeed()*Math.exp((-1)*Math.pow(this.getWeight()/20, 2)))));
 
 			if (!character.getInventory().getPair(position).second()){
@@ -60,10 +69,11 @@ public class Armor extends Item{
 		}
 	}
 
+	// Desequipa um 'item'
 	public void unequip(Character character){
 		if (character.getInventory().searchItem(this.getName()) != null && character.getInventory().getArmorCounter() > 0){
 
-			// procurando pela posicao do item
+			// Procurando pela posicao do item
 			int position = 0;
 
 			for (int i=0; character.getInventory().searchItem(i) != null; i++){
@@ -71,7 +81,7 @@ public class Armor extends Item{
 						position = i;
 		    }
 
-		    character.setSpeedArmor(0);
+		    character.setSpeedArmor(0);	// voltando a velocidade sem o 'armor'
 		
 			if (character.getInventory().getPair(position).second()){
 				character.getInventory().getPair(position).setSecond(false);

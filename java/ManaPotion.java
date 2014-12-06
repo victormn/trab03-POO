@@ -2,30 +2,32 @@ import java.util.*;
 
 public class ManaPotion extends Item implements Potion{
 
+	/* Atributos */
+	
 	private int manapts;
 
-	public int getRestorePts(){
-		return manapts;
-	}
+	/* Construtor */
 
 	public ManaPotion(String name, double price, int manapts){
 		super(name, price);
 
 		this.manapts = manapts;
 	}
+
+	/* Metodos */	
+
+	public int getRestorePts(){
+		return manapts;
+	}
+
 	
-	// metodo da interface Potion
+	// Implementa metodo da interface 'Potion', indica que um item 'healthpotion' foi utilizado
 	public void use(Character character){
-		character.addMP(manapts); 
-// mudamos de getRestorePts() para manapts
+		character.addMP(manapts);
 		character.getInventory().removeItem(getName());
 	}
 
-	// metodos da classe Item que devem ser implementados
-
-	// nao sao utilizados nessa classe
-	public void equip(Character character){ }
-	public void unequip(Character character){ }	
+	/* Metodos da classe 'Item' que devem ser implementados */
 
 	public int getAttackPts(){ 
 		return 0;
@@ -33,4 +35,10 @@ public class ManaPotion extends Item implements Potion{
 	public int getDefensePts(){ 
 		return 0;
 	}
+	
+	// Equipa um 'item'(implementado em Armor e Weapon, itens que podem ser equipados)
+	public void equip(Character character){ }
+
+	// Desequipa um 'item'(implementado em Armor e Weapon, itens que podem ser equipados)
+	public void unequip(Character character){ }	
 }

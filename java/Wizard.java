@@ -2,8 +2,21 @@ import java.util.*;
 
 public class Wizard extends Character{
 
-	protected int wisdom;
+	/* Atributos */
+		
+	protected int wisdom;			// sabedoria do 'wizard'
+
+	/* Construtor */
+
+	public Wizard(String alias, int wisdom){
+		super(alias);		
+		this.wisdom = wisdom;
+
+	}
 	
+	/* Metodos */
+
+	// Retorna valor de defesa de 'character'
 	protected int getDefensePoints(){
 		int item_def_pts = 0;
 
@@ -15,6 +28,7 @@ public class Wizard extends Character{
 
 	}
 
+	// Retorna valor de ataque de 'character'
 	protected int getAttackPoints(){
 		int item_att_pts = 0;
 		
@@ -24,14 +38,9 @@ public class Wizard extends Character{
 	    	}	
 		return (int)((strenght*0.5+dexterity*0.3+speed*0.2+item_att_pts)*(XP/3));
 
-	}
+	}	
 
-	public Wizard(String alias, int wisdom){
-		super(alias);		
-		this.wisdom = wisdom;
-
-	}
-
+	// Indica sabedoria do 'wizard'
 	public void addWisdom(int wisdom){
 		this.wisdom += wisdom;
 		if (this.wisdom > 100)
