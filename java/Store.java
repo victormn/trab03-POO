@@ -9,8 +9,7 @@ public class Store{
 	/* Construtor */
 		
 	public Store(){
-		itemsforsale = new ArrayList<Item>();
-		nitemsforsale = 0;		
+		itemsforsale = new ArrayList<Item>();			
 	}
 
 	/* Metodos */
