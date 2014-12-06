@@ -97,6 +97,17 @@ public class Team{
 		return points/characters.size();
 	}
 
+	// Exibe o resultado
+	public void getResults(){
+
+		if (lose == 1)
+			System.out.println("Os membro de " + getName() + " disseram antes de morrer: 'espero que tenham implementado um respawn...'");
+		if (win == 1)
+			System.out.println("Os membro de " + getName() + " estao gritando: AEEEEEE, VENCEMOS!! *-* *-*");
+		if (draw == 1)
+			System.out.println("Os membro de " + getName() + " disseram antes de morrer: 'vou levar todos voces juntos' \n...e realmente levaram");
+	}	
+
 	// Retorna o array de 'character' de um time 
 	public ArrayList<Character> getCharacters(){
 		return characters;	

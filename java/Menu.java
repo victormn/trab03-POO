@@ -17,6 +17,8 @@ public class Menu{
 
 		Scanner scanner = new Scanner(System.in);
 
+		System.out.println(team.toString());
+
 		for (int i = 0; i < allCharacters.size(); i++) {
 			System.out.println("Nome: " + allCharacters.get(i).getName());
 			System.out.println("Strenght: " + allCharacters.get(i).getStrenght());
@@ -145,12 +147,20 @@ public class Menu{
 
 	public void battleStart(){
 
+			Battle battle = new Battle(team1, team2);
+			battle.manageFight();
+	}
 
+	public void battleResults(){
+
+		team1.resolveBattle(team2);
+
+		team1.getResults();
+		team1.getResults();
 
 	}
 
-	// metodos auxiliares para os de cima
-
+	// metodo auxiliar
 	public Character searchChar(String name){
 		for (int i=0; i < allCharacters.size(); i++){
 				if(allCharacters.get(i).getName().equals(name))
