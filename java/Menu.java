@@ -1,18 +1,58 @@
 public class Menu{
 
-	private Team team1;
-	private Team team2;
+	private ArrayList<Team> teams;
 	private ArrayList<Character> allCharacters;
 
 
 	// metodos que compoem o menu do jogo
 
-	public void buildMenu(Team team1, Team team2, ArrayList<Character> allCharacters){
-		this.team1 = team1;
-		this.team2 = team2;
+	public Menu(ArrayList<Character> allCharacters){
 		this.allCharacters = allCharacters;
 	}
 
+	public Team getTeam(int i){
+		return teams.get(i);
+	}
+
+	public void setTeams(){
+
+		Scanner scanner = new Scanner(System.in);
+		Color color;
+
+		System.out.println("Criando os TIMES\n\n\n");
+
+		for (int i = 1; i <= 2; i ++) {
+					
+			System.out.println("-TIME " + i + ":");
+			System.out.println("Nome: ");
+			String name = scanner.nextLine();
+			System.out.println("Cor: \n[1] Blue\n[2] Red\n[3] Green\n[4] Yellow\n [5] White\n [6] Black");
+			int color1 = scanner.nextInt();
+
+			switch(color){
+
+				case 1: 
+					teams.get(i) = new Team(name, Color.blue);
+				case 2: 
+					teams.get(i) = new Team(name, Color.red);
+				case 3: 
+					teams.get(i) = new Team(name, Color.green);					
+				case 4: 
+					teams.get(i) = new Team(name, Color.yellow);
+				case 5: 
+					teams.get(i) = new Team(name, Color.white);	
+				case 6: 
+					teams.get(i) = new Team(name, Color.black);
+				default:	
+					System.out.println("Cor invalida, agora o time sera Green!");	
+					teams.get(i) = new Team(name, Color.green);	
+			}
+		}
+
+
+	}
+
+	// metodo que faz 1 time escolher 3 personagens 
 	public void pickYourCharacters(Team team){
 
 		Scanner scanner = new Scanner(System.in);
@@ -145,18 +185,61 @@ public class Menu{
 
 	}
 
+	public void equipItems(Team team){
+
+		Scanner scanner = new Scanner(System.in);
+
+		for (int i = 0; i < 3; i++) {
+			
+			System.out.println("Itens de " + team.getCharacters().get(i).getName() + " que podem ser equipados:");
+
+			while (team.getCharacters().get(i).getInventory().searchItem(i) != null){
+
+				System.out.println(team.getCharacters().get(i).getInventory().searchItem(i).getName());
+			}
+
+			boolean done = true;
+
+			while(!done){
+
+				System.out.println("Qual item deseja equipar? ");
+				String nameItem = scanner.nextLine();
+
+				Item item = team.getCharacters().get(i).getInventory().searchItem(nameItem);
+
+				if (item == null)
+					System.out.println("Nao existe esse item no inventario!");
+				else
+					item.equip(team.getCharacters().get(i));
+				
+				System.out.println("Deseja equipar mais itens?\n [1] Sim\n[2] Nao");
+				int itemOption = scanner.nextInt();		
+
+				switch(itemOption){
+
+					case 1: done = false;
+					case 2: done = true;
+					default: 
+						System.out.println("Opcao invalida! Nao vai equipar mais nada por isso!");
+						done = true;
+
+				}		
+			}
+		}
+	}
+
 	public void battleStart(){
 
-			Battle battle = new Battle(team1, team2);
+			Battle battle = new Battle(teams.get(1), teams.get(2));
 			battle.manageFight();
 	}
 
 	public void battleResults(){
 
-		team1.resolveBattle(team2);
+		teams.get(1).resolveBattle(teams.get(2));
 
-		team1.getResults();
-		team1.getResults();
+		teams.get(1).getResults();
+		teams.get(1).getResults();
 
 	}
 
@@ -168,6 +251,4 @@ public class Menu{
 	    	}
 		return null; // quando nao existir character com esse nome retorna null	
 	}
-
-
 }

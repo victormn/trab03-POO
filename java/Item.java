@@ -36,7 +36,7 @@ public abstract class Item{
 	/* Métodos */
 
 	// Equipa um 'item'(implementado em Armor e Weapon, itens que podem ser equipados)
-	public abstract void equip(Character character);
+	public abstract boolean equip(Character character);
 
 	// Desequipa um 'item'(implementado em Armor e Weapon, itens que podem ser equipados)
 	public abstract void unequip(Character character);

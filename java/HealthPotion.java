@@ -41,7 +41,7 @@ public class HealthPotion extends Potion{
 	}
 
 	// Equipa um 'item'(implementado em Armor e Weapon, itens que podem ser equipados)	
-	public void equip(Character character){ }
+	public boolean equip(Character character){ }
 
 	// Desequipa um 'item'(implementado em Armor e Weapon, itens que podem ser equipados)
 	public void unequip(Character character){ }

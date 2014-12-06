@@ -45,24 +45,55 @@ public class Weapon extends Item{
 	}
 
 	// Equipa um 'item'
-	public void equip(Character character){
+	public boolean equip(Character character){
 
-		if (character.getInventory().searchItem(this.getName()) != null && character.getInventory().getWeaponCounter() < 2){
+		try{
+			character.getInventory().searchItem(this.getName())
+		}catch (NullPointerException e) {
+			System.out.println("Weapon nao existe no inventario!");
+			return false;
+		}
 
-			// Procurando pela posicao do item
-			int position = 0;
+		// -Caso o personagem tenha estourado sua capacidade maxima de carregar weapon
+		//  foi decidido que uma das weapon equipadas sera desequipadas para dar lugar
+		//  para a nova weapon
+		// -Caso nao seja uma weapon, ele vai ver que nao mudou o numero de weapon no
+		//  inventario e vai continuar a busca pelo proximo item equipado
 
-			for (int i=0; character.getInventory().searchItem(i) != null; i++){
-					if(character.getInventory().searchItem(i).getName().equals(this.getName()))
-						position = i;
-		    }
+		int pos = -1;
+		while (character.getInventory().getWeaponCounter() >= 2){
 
-			// Se item nao estiver equipado (seu boolean estara como false)
-			if (!character.getInventory().getPair(position).second()){
-				character.getInventory().getPair(position).setSecond(true);
-				character.getInventory().setWeaponCounter(1);
+			boolean found = false;
+			int pos;
+			for (int i = pos+1; found = false; i++) {
+				if (character.getInventory().getPair(i).second()){
+					pos = i;
+					found = true;
+				}
+			}
+			character.getInventory().get(pos).unequip(character);
+
+			if (character.getInventory().getWeaponCounter() >= 2){
+				character.getInventory().get(pos).equip(character);
+
 			}
 		}
+
+		// Procurando pela posicao do item
+		int position = 0;
+
+		for (int i=0; character.getInventory().searchItem(i) != null; i++){
+				if(character.getInventory().searchItem(i).getName().equals(this.getName()))
+					position = i;
+	    }
+
+		// Se item nao estiver equipado (seu boolean estara como false)
+		if (!character.getInventory().getPair(position).second()){
+			character.getInventory().getPair(position).setSecond(true);
+			character.getInventory().setWeaponCounter(1);
+		}
+		return true;
+		
 	}
 
 	// Desequipa um 'item'
