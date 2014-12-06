@@ -16,9 +16,7 @@ public abstract class Character{
 	protected int speedArmor;
 	protected int dexterity;
 	protected int constitution;
-	protected abstract int getDefensePoints();
-	protected abstract int getAttackPoints();
-
+	
 	/* Construtor */
 
 	public Character(String alias){
