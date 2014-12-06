@@ -6,10 +6,13 @@ public class Inventory{
 
 	private int spaces;
 	private double gold;
-	private int armorCounter;		// atributo auxiliar que indica a quantidade de 'armor's equipados(max=1)
-	private int weaponCounter;		// atributo auxiliar que indica a quantidade de 'weapon's equipados(max=2)
-	private ArrayList<Pair<Item, Boolean>> items;		// armazena 'item's existentes em 'inventory' em formato de um pair(associacao
-						// de dois valores). A implementacao de pair foi feita atraves da classe 'Pair'
+	// atributo auxiliar que indica a quantidade de 'armor's equipados(max=1)
+	private int armorCounter;		
+	// atributo auxiliar que indica a quantidade de 'weapon's equipados(max=2)	
+	private int weaponCounter;		
+	// armazena 'item's existentes em 'inventory' em formato de um pair(associacao
+	// de dois valores). A implementacao de pair foi feita atraves da classe 'Pair'
+	private ArrayList<Pair<Item, Boolean>> items;
 
 	/* Construtor */
 
