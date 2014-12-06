@@ -82,7 +82,7 @@ public class Inventory{
 		this.gold = this.gold + gold;
 	}
 
-	// Procura por um objeto 'Item' através de sua posição no vetor// Procura por um objeto 'Item' através de seu nome
+	// Procura por um objeto 'Item' através de seu nome
 	public Item searchItem(String name){			
 		for (int i=0; i < items.size(); i++){
 			if(items.get(i).first().getName().equals(name))

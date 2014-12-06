@@ -2,14 +2,20 @@ import java.util.*;
 
 public class Battle{
 
+	/* Atributos */
+
 	private Team team1;
 	private Team team2;
 
+	/* Construtor */
+	
 	public Battle(Team team1, Team team2){
 		this.team1 = team1;
 		this.team2 = team2;
 
 	}
+
+	/* Metodos */
 
 	// Gerencia as thread que ocorrem nos ataques 
 	public void manageFight(){
