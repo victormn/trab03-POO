@@ -70,9 +70,15 @@ public abstract class Character{
 		return myitems;
 	}
 
+	// Retorna valor de ataque de 'character'
 	public int getSpeed(){
 		return speed - speedArmor;
 	}
+
+	// Retorna valor de defesa de 'character'
+	protected abstract int getDefensePoints();
+
+	protected abstract int getAttackPoints();
 
 	// Calcula chances de ataques e deduz o valor obtido de 'HP'(ataque realizado)
 	public void attack(Character oponente){ 

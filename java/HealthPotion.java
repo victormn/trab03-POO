@@ -6,10 +6,6 @@ public class HealthPotion extends Potion{
 
 	private int healthpts;
 
-	public int getRestorePts(){
-		return healthpts;
-	}
-	
 	/* Construtor */
 
 	public HealthPotion(String name, double price, int healthpts){
