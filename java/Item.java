@@ -49,5 +49,4 @@ public abstract class Item{
 
 	// Retorna o valor de 'weight' do item 'armor'(implementado em Armor)
 	public double getWeight(){ return 0.0; }	
-
 }

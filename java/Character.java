@@ -6,7 +6,6 @@ public abstract class Character{
 
 	private String alias;
 	private Inventory myitems;
-	private int opponents;
 	private int HP;
 	private int MP;
 
@@ -36,11 +35,6 @@ public abstract class Character{
 	// Retorna o valor de 'HP' do personagem	
 	public int getHP(){
 		return HP;
-	}
-
-	// Retorna a quantidade de oponentes que um 'character' tem 
-	public int getOpponents(){
-		return opponents;
 	}
 	
 	// Retorna o valor de 'dexterity' do personagem
@@ -78,7 +72,7 @@ public abstract class Character{
 
 	protected abstract int getAttackPoints();
 
-	// Calcula chances de ataques e deduz o valor obtido de 'HP'(ataque realizado)
+	// Calcula chances de ataques e reduz o valor obtido de 'HP'(ataque realizado)
 	public void attack(Character oponente){ 
 
 		int peso = 1; // se for um ataque critico: peso = 2; se ele errar o ataque: peso = 0; se for um ataque normal: peso continua 1 
@@ -96,18 +90,38 @@ public abstract class Character{
 
 	    int rand2 = trab3.nextInt(0, 21) + 10; // rand equivale a um numero aleatorio entre 10 e 30 (11 numeros nesse intervalo)
 
-		int dano = (int)(peso*(getAttackPoints() - oponente.getDefensePoints()/3 + rand2));
+	    // O MP é utilizado como some no ataque, e após isso, é zerado
+	    // MP pode ser recuperado atraves de pocoes que sao usadas na beira da morte do personagem
+		int dano = (int)(peso*(getAttackPoints() - oponente.getDefensePoints()/3 + rand2 + MP));
+		this.MP = 0;
 
 		if (dano <= 0) dano = 1;
 
+		// -Se o oponente for morrer, ou seja, seu HP <= 0, ele tentara tomar pocoes "Health" para
+		//	recuperar vida e pocoes "Mana" para aumentar o MP
+		synchronized(oponente){
+
+			if (oponente.getHP() - dano <= 0){
+
+				Potion health = (Potion)oponente.getInventory().searchItem("Health");
+				Potion mana = (Potion)oponente.getInventory().searchItem("Mana");
+
+				// -Usa uma pocao de recuperar vida e outra de recuperar MP (caso tenha no inventario).
+				// -Precisa estar a beira da morte para pode usa-las, por decisao de projeto, ela eh
+				// a ultima opcao na batalha
+				if (health != null) health.use(oponente);
+				if (mana != null) mana.use(oponente);
+
+			}
+		}
 		oponente.addHP(dano*(-1));
 	}
 
 	// Indica experiencia do 'character', deve estar limitada em [1,100]
 	public void addXP(int XP){
 		this.XP += XP;
-		if (this.XP > 5000)
-			this.XP = 5000;
+		if (this.XP > 100)
+			this.XP = 100;
 	}
 
 	// Indica unidade de poder mágico do 'character'
@@ -129,10 +143,6 @@ public abstract class Character{
 	}
 	
 	/* Métodos Setters */
-
-	public void setOpponents(int opponents){
-		this.opponents = opponents;
-	}
 
 	// Atributos que, somados, devem dar 100
 	public void setStrenght(int strenght){

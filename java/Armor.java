@@ -66,17 +66,21 @@ public class Armor extends Item{
 		while (character.getInventory().getArmorCounter() >= 1){
 
 			boolean found = false;
-			for (int i = pos+1; found = false; i++) {
+			for (int i = pos+1; found == false; i++) {
 				if (character.getInventory().getPair(i).second()){
 					pos = i;
 					found = true;
 				}
 			}
-			character.getInventory().searchItem(pos).unequip(character);
 
-			if (character.getInventory().getArmorCounter() >= 1){
-				character.getInventory().searchItem(pos).equip(character);
+			if (pos != -1){
 
+				character.getInventory().searchItem(pos).unequip(character);
+
+				if (character.getInventory().getArmorCounter() >= 1){
+					character.getInventory().searchItem(pos).equip(character);
+
+				}
 			}
 		}
 

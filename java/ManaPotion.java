@@ -21,7 +21,7 @@ public class ManaPotion extends Item implements Potion{
 	}
 
 	
-	// Implementa metodo da interface 'Potion', indica que um item 'healthpotion' foi utilizado
+	// Implementa metodo de 'Item', indica que um item 'healthpotion' foi utilizado
 	public void use(Character character){
 		character.addMP(manapts);
 		character.getInventory().removeItem(getName());

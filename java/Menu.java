@@ -189,8 +189,9 @@ public  class Menu{
 
 			System.out.println("TIME " + team.getName() + "\n" + team.getCharacters().get(i).getName() + " gostaria de comprar itens?");
 
-			boolean validOption = true;
+			boolean validOption;
 			do{
+				validOption = true;
 				System.out.println("\n[1] Sim\n[2] Nao");	
 				shopOption = scanner.nextInt();
 
@@ -277,9 +278,9 @@ public  class Menu{
 
 				System.out.print("Qual item deseja equipar? ");
 				String nameItem = scanner.nextLine();
-System.out.println("1");
+
 				Item item = team.getCharacters().get(i).getInventory().searchItem(nameItem);
-System.out.println("2");
+
 				if (item == null)
 					System.out.println("\n!Nao existe esse item no inventario!\n");
 				else{

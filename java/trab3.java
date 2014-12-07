@@ -45,8 +45,8 @@ public class trab3{
 
 		Armor armor = new Armor("Helmet", 0.0, 10, 20.0);
 		Weapon weapon = new Weapon("Sword", 0.0, 7, 90.0);
-		HealthPotion health = new HealthPotion("Life", 0.0, 1);
-		ManaPotion mana = new ManaPotion("Mana", 0.0, 1);
+		HealthPotion health = new HealthPotion("Health", 0.0, 1000);
+		ManaPotion mana = new ManaPotion("Mana", 0.0, 1000);
 
 
 		/* armor */
@@ -70,23 +70,22 @@ public class trab3{
 		allItems.add(new Weapon("Elder Wand", 800.0, 9, 50));
 	 
 		/* health potion */
-		allItems.add(new HealthPotion("Felix Felicis", 80, 20));
-		allItems.add(new HealthPotion("Anti Kyptonite Potion", 99.99, 50));
-		allItems.add(new HealthPotion("Graber", 40, 3));
-		allItems.add(new HealthPotion("Own Tears", 00.0, 1));
-		allItems.add(new HealthPotion("Dindle", 100, 32));
+		allItems.add(new HealthPotion("Health", 100, 1000));
+		allItems.add(new HealthPotion("Health", 100, 1000));
+		allItems.add(new HealthPotion("Health", 100, 1000));
+		allItems.add(new HealthPotion("Health", 100, 1000));
+		allItems.add(new HealthPotion("Health", 100, 1000));
 	 
 		/* mana potion */
-		allItems.add(new ManaPotion("Hangover", 250, 251));
-		allItems.add(new ManaPotion("Enemy's Blood", 29.99, 20));
-		allItems.add(new ManaPotion("Water", 1.50, 1));
+		allItems.add(new ManaPotion("Mana", 100, 200));
+		allItems.add(new ManaPotion("Mana", 100, 200));
+		allItems.add(new ManaPotion("Mana", 100, 200));
 
 
 		/* criando os personagens */
 
 		/* 2 knight */
-		//Knight bruce = new Knight("Bruce Wayne", 10);
-		Knight bruce = new Knight("a", 10);
+		Knight bruce = new Knight("Bruce Wayne", 10);
 		bruce.getInventory().earnGold(1000.0);
 		bruce.getInventory().setSpaces(15);
 	 
@@ -96,7 +95,7 @@ public class trab3{
 	 
 		bruce.getInventory().searchItem("Helmet").equip(bruce);
 		bruce.getInventory().searchItem("Sword").equip(bruce);
-		bruce.getInventory().searchItem("Life").equip(bruce);
+		bruce.getInventory().searchItem("Health").equip(bruce);
 	 
 		bruce.setStrenght(60);
 		bruce.setSpeed(5);
@@ -106,8 +105,7 @@ public class trab3{
 		bruce.addMP(0);
 		allCharacters.add(bruce);
 
-		//Knight bodolski = new Knight("Sir Bodolski", 30);
-		Knight bodolski = new Knight("b", 30);
+		Knight bodolski = new Knight("Sir Bodolski", 30);
 		bodolski.getInventory().earnGold(1000.0);
 		bodolski.getInventory().setSpaces(15);
 	 
@@ -117,7 +115,7 @@ public class trab3{
 	 
 		bodolski.getInventory().searchItem("Helmet").equip(bodolski);
 		bodolski.getInventory().searchItem("Sword").equip(bodolski);
-		bodolski.getInventory().searchItem("Life").equip(bodolski);
+		bodolski.getInventory().searchItem("Health").equip(bodolski);
 	 
 		bodolski.setStrenght(50);
 		bodolski.setSpeed(30);
@@ -128,8 +126,7 @@ public class trab3{
 		allCharacters.add(bodolski);
 
 		/* 2 thief */
-		//Thief barry = new Thief("Barry Allen", 25);
-		Thief barry = new Thief("c", 25);
+		Thief barry = new Thief("Barry Allen", 25);
 		barry.getInventory().earnGold(1000.0);
 		barry.getInventory().setSpaces(15);
 
@@ -139,7 +136,7 @@ public class trab3{
 	 
 		barry.getInventory().searchItem("Helmet").equip(barry);
 		barry.getInventory().searchItem("Sword").equip(barry);
-		barry.getInventory().searchItem("Life").equip(barry);
+		barry.getInventory().searchItem("Health").equip(barry);
 
 		barry.setStrenght(3);
 		barry.setSpeed(90);
@@ -149,8 +146,7 @@ public class trab3{
 		barry.addMP(0);
 		allCharacters.add(barry);
 
-		//Thief goultier = new Thief("Mr. Goultier", 47);
-		Thief goultier = new Thief("d", 47);
+		Thief goultier = new Thief("Mr. Goultier", 47);
 		goultier.getInventory().earnGold(1000.0);
 		goultier.getInventory().setSpaces(15);
 
@@ -160,7 +156,7 @@ public class trab3{
 	 
 		goultier.getInventory().searchItem("Helmet").equip(goultier);
 		goultier.getInventory().searchItem("Sword").equip(goultier);
-		goultier.getInventory().searchItem("Life").equip(goultier);
+		goultier.getInventory().searchItem("Health").equip(goultier);
 
 		goultier.setStrenght(10);
 		goultier.setSpeed(30);
@@ -171,18 +167,17 @@ public class trab3{
 		allCharacters.add(goultier);
 
 		/* 2 wizards */
-		//Wizard john = new Wizard("John Constantine", 10);
-		Wizard john = new Wizard("e", 10);
+		Wizard john = new Wizard("John Constantine", 10);
 		john.getInventory().earnGold(1000.0);
 		john.getInventory().setSpaces(15);
 
 		john.getInventory().insertItem(armor); 
 		john.getInventory().insertItem(weapon); 
-		john.getInventory().insertItem(mana); 
+		john.getInventory().insertItem(health); 
 	 
 		john.getInventory().searchItem("Helmet").equip(john);
 		john.getInventory().searchItem("Sword").equip(john);
-		john.getInventory().searchItem("Mana").equip(john);
+		john.getInventory().searchItem("Health").equip(john);
 		
 		john.setStrenght(50);
 		john.setSpeed(15);
@@ -192,18 +187,17 @@ public class trab3{
 		john.addMP(100);
 		allCharacters.add(john);
 
-		//Wizard violet = new Wizard("Lady Violet", 16);
-		Wizard violet = new Wizard("f", 16);
+		Wizard violet = new Wizard("Lady Violet", 16);
 		violet.getInventory().earnGold(1000.0);
 		violet.getInventory().setSpaces(15);
 
 		violet.getInventory().insertItem(armor); 
 		violet.getInventory().insertItem(weapon); 
-		violet.getInventory().insertItem(mana); 
+		violet.getInventory().insertItem(health); 
 	 
 		violet.getInventory().searchItem("Helmet").equip(violet);
 		violet.getInventory().searchItem("Sword").equip(violet);
-		violet.getInventory().searchItem("Mana").equip(violet);
+		violet.getInventory().searchItem("Health").equip(violet);
 
 		violet.setStrenght(2);
 		violet.setSpeed(70);

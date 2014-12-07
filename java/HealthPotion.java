@@ -21,7 +21,7 @@ public class HealthPotion extends Item implements Potion{
 		return healthpts;
 	}
 	
-	// Implementa metodo da interface 'Potion', indica que um item 'healthpotion' foi utilizado
+	// Implementa metodo de 'Item', indica que um item 'healthpotion' foi utilizado
 	public void use(Character character){
 		character.addHP(healthpts);
 		character.getInventory().removeItem(getName());
