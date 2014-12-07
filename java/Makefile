@@ -8,10 +8,3 @@ clean:
 run:
 	@java trab3
 
-# sera usado somente para testar os metodos das classes atraves de mainTest.java
-test:
-	@javac mainTest.java
-
-runT:
-	@java mainTest
-
